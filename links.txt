@@ -1,0 +1,381 @@
+
+link : #primary-content
+text : Skip To Main Content
+
+link : /content/www/us/en/homepage.html
+text : Intel Home
+
+link : /content/www/us/en/legal/terms-of-use.html
+text : 
+
+link : https://www.intel.com/content/www/us/en/my-intel/forgot-userid.html
+text : username
+
+link : https://www.intel.com/content/www/us/en/my-intel/forgot-password.html
+text : password
+
+link : /content/www/us/en/my-intel/sign-in-faq.html
+text : Frequently Asked Questions
+
+link : #
+text : Sign in here
+
+link : #
+text : Sign up here
+
+link : https://www.intel.sg/content/www/xa/en/ark/products/134906/intel-core-i7-8750h-processor-9m-cache-up-to-4-10-ghz.html
+text : Asia Pacific (English)
+
+link : https://www.intel.com.au/content/www/au/en/ark/products/134906/intel-core-i7-8750h-processor-9m-cache-up-to-4-10-ghz.html
+text : Australia (English)
+
+link : https://www.intel.in/content/www/in/en/ark/products/134906/intel-core-i7-8750h-processor-9m-cache-up-to-4-10-ghz.html
+text : India (English)
+
+link : https://www.intel.co.id/content/www/id/id/ark/products/134906/intel-core-i7-8750h-processor-9m-cache-up-to-4-10-ghz.html
+text : Indonesia (Bahasa Indonesia)
+
+link : https://www.intel.co.jp/content/www/jp/ja/ark/products/134906/intel-core-i7-8750h-processor-9m-cache-up-to-4-10-ghz.html
+text : Japan (???)
+
+link : https://www.intel.co.kr/content/www/kr/ko/ark/products/134906/intel-core-i7-8750h-processor-9m-cache-up-to-4-10-ghz.html
+text : Korea (???)
+
+link : https://www.intel.cn/content/www/cn/zh/ark/products/134906/intel-core-i7-8750h-processor-9m-cache-up-to-4-10-ghz.html
+text : Mainland China (????)
+
+link : https://www.intel.com.tw/content/www/tw/zh/ark/products/134906/intel-core-i7-8750h-processor-9m-cache-up-to-4-10-ghz.html
+text : Taiwan (????)
+
+link : https://www.thailand.intel.com/content/www/th/th/ark/products/134906/intel-core-i7-8750h-processor-9m-cache-up-to-4-10-ghz.html
+text : Thailand (???)
+
+link : https://www.intel.vn/content/www/vn/vi/ark/products/134906/intel-core-i7-8750h-processor-9m-cache-up-to-4-10-ghz.html
+text : Vietnam (Tiê?ng Viê?t)
+
+link : https://www.intel.fr/content/www/fr/fr/ark/products/134906/intel-core-i7-8750h-processor-9m-cache-up-to-4-10-ghz.html
+text : France (Français)
+
+link : https://www.intel.de/content/www/de/de/ark/products/134906/intel-core-i7-8750h-processor-9m-cache-up-to-4-10-ghz.html
+text : Germany (Deutsch)
+
+link : https://www.intel.ie/content/www/ie/en/homepage.html
+text : Ireland (English)
+
+link : https://www.intel.it/content/www/it/it/ark/products/134906/intel-core-i7-8750h-processor-9m-cache-up-to-4-10-ghz.html
+text : Italy (Italiano)
+
+link : https://www.intel.pl/content/www/pl/pl/ark/products/134906/intel-core-i7-8750h-processor-9m-cache-up-to-4-10-ghz.html
+text : Poland (Polski)
+
+link : https://www.intel.ru/content/www/ru/ru/ark/products/134906/intel-core-i7-8750h-processor-9m-cache-up-to-4-10-ghz.html
+text : Russia (???????)
+
+link : https://www.intel.es/content/www/es/es/ark/products/134906/intel-core-i7-8750h-processor-9m-cache-up-to-4-10-ghz.html
+text : Spain (Español)
+
+link : https://www.intel.com.tr/content/www/tr/tr/ark/products/134906/intel-core-i7-8750h-processor-9m-cache-up-to-4-10-ghz.html
+text : Turkey (Türkçe)
+
+link : https://www.intel.co.uk/content/www/uk/en/ark/products/134906/intel-core-i7-8750h-processor-9m-cache-up-to-4-10-ghz.html
+text : United Kingdom (English)
+
+link : https://www.intel.la/content/www/xl/es/ark/products/134906/intel-core-i7-8750h-processor-9m-cache-up-to-4-10-ghz.html
+text : Argentina (Español)
+
+link : https://www.intel.com.br/content/www/br/pt/ark/products/134906/intel-core-i7-8750h-processor-9m-cache-up-to-4-10-ghz.html
+text : Brazil (Português)
+
+link : https://www.intel.la/content/www/xl/es/ark/products/134906/intel-core-i7-8750h-processor-9m-cache-up-to-4-10-ghz.html
+text : Chile (Español)
+
+link : https://www.intel.la/content/www/xl/es/ark/products/134906/intel-core-i7-8750h-processor-9m-cache-up-to-4-10-ghz.html
+text : Colombia (Español)
+
+link : https://www.intel.la/content/www/xl/es/ark/products/134906/intel-core-i7-8750h-processor-9m-cache-up-to-4-10-ghz.html
+text : Latin America (Español)
+
+link : https://www.intel.la/content/www/xl/es/ark/products/134906/intel-core-i7-8750h-processor-9m-cache-up-to-4-10-ghz.html
+text : Mexico (Español)
+
+link : https://www.intel.la/content/www/xl/es/ark/products/134906/intel-core-i7-8750h-processor-9m-cache-up-to-4-10-ghz.html
+text : Peru (Español)
+
+link : https://www.intel.co.il/content/www/il/he/homepage.html
+text : Israel (?????)
+
+link : https://www.intel.com/content/www/us/en/ark/products/134906/intel-core-i7-8750h-processor-9m-cache-up-to-4-10-ghz.html
+text : United States (English)
+
+link : https://www.intel.ca/content/www/ca/en/ark/products/134906/intel-core-i7-8750h-processor-9m-cache-up-to-4-10-ghz.html
+text : Canada (English)
+
+link : https://www.intel.ca/content/www/ca/fr/ark/products/134906/intel-core-i7-8750h-processor-9m-cache-up-to-4-10-ghz.html
+text : Canada (Français)
+
+link : javascript:void();
+text : Sign In
+
+link : https://downloadcenter.intel.com?wapkw=quicklink:download-center
+text : Download Center
+
+link : https://ark.intel.com?wapkw=quicklink:product-specifications
+text : Product Specifications
+
+link : https://www.intel.com/content/www/us/en/products/devices-systems.html?wapkw=quicklink:products
+text : Products
+
+link : https://www.intel.com/content/www/us/en/support.html?wapkw=quicklink:support
+text : Support
+
+link : javascript:void();
+text : Sign In
+
+link : https://support.apple.com/downloads/safari
+text : Safari
+
+link : https://support.google.com/chrome/answer/95346?hl=en
+text : Chrome
+
+link : https://www.microsoft.com/en-us/edge
+text : Edge
+
+link : https://www.mozilla.org/en-US/firefox/new/
+text : Firefox
+
+link : https://www.intel.com/content/www/us/en/products/overview.html
+text : Products Home
+
+link : /content/www/us/en/ark.html
+text : Product Specifications
+
+link : /content/www/us/en/ark.html#@Processors
+text : Processors
+
+link : /compare/
+text : Compare
+
+link : /content/www/us/en/products/find-a-system.html?productId=134906
+text : Find a System
+
+link : /content/www/us/en/products/find-a-reseller.html
+text : Find a Reseller
+
+link : #tab-blade-1-0
+text : Specifications
+
+link : #tab-blade-1-0-0
+text : Essentials
+
+link : #tab-blade-1-0-1
+text : CPU Specifications
+
+link : #tab-blade-1-0-2
+text : Supplemental Information
+
+link : #tab-blade-1-0-3
+text : Memory Specifications
+
+link : #tab-blade-1-0-4
+text : Processor Graphics
+
+link : #tab-blade-1-0-5
+text : Expansion Options
+
+link : #tab-blade-1-0-6
+text : Package Specifications
+
+link : #tab-blade-1-0-7
+text : Advanced Technologies
+
+link : #tab-blade-1-0-8
+text : Security & Reliability
+
+link : #tab-blade-1-4
+text : Ordering and Compliance
+
+link : #tab-blade-1-4-0
+text : Ordering and spec information
+
+link : #tab-blade-1-4-2
+text : Trade compliance information
+
+link : #tab-blade-1-4-3
+text : PCN/MDDS Information
+
+link : #tab-blade-1-3
+text : Product Images
+
+link : #tab-blade-1-7
+text : Drivers and Software
+
+link : #tab-blade-1-8
+text : Technical Documentation
+
+link : /content/www/us/en/ark/products/series/122593/8th-generation-intel-core-i7-processors.html
+text : 8th Generation Intel® Core™ i7 Processors
+
+link : /content/www/us/en/ark/products/codename/97787/coffee-lake.html
+text : Products formerly Coffee Lake
+
+link : https://www.intel.com/content/www/us/en/processors/core/core-technical-resources.html
+text : View now
+
+link : /content/www/us/en/secure/ark/mm/963718.html
+text : 963718
+
+link : https://qdms.intel.com/Portal/SearchPCNDataBase.aspx?mm=963718
+text : PCN
+
+link : https://qdms.intel.com/MDDS/MDDSView.aspx?mm=963718
+text : MDDS
+
+link : #
+text : View All
+
+link : #
+text : View Less
+
+link : https://www.intel.com/content/www/us/en/processors/processor-numbers.html
+text : interpreting Intel® processor numbers
+
+link : https://www.intel.com/content/www/us/en/processors/processor-numbers-data-center.html
+text : Intel® processor numbers for the Data Center
+
+link : /content/www/us/en/ark/search/featurefilter.html?productType=873&0_Embedded=True
+text : Find products with Embedded Options Available
+
+link : /content/www/us/en/ark/search/featurefilter.html?productType=873&0_ECCMemory=True
+text : Find products with ECC Memory Supported ‡
+
+link : http://www.intel.com/content/www/us/en/architecture-and-technology/visual-technology/graphics-overview.html
+text : Intel® Graphics Technology
+
+link : /content/www/us/en/ark/search/featurefilter.html?productType=873&0_QuickSyncVideo=True
+text : Find products with Intel® Quick Sync Video
+
+link : http://www.intel.com/OptaneMemory
+text : www.intel.com/OptaneMemory
+
+link : https://www.intel.com/content/www/us/en/architecture-and-technology/vpro/what-is-vpro.html
+text : Learn more about Intel vPro®
+
+link : /content/www/us/en/ark/search/featurefilter.html?productType=873&0_VProTechnology=True
+text : Find products with Intel vPro® Platform Eligibility ‡
+
+link : /content/www/us/en/ark/search/featurefilter.html?productType=873&0_HyperThreading=True
+text : Find products with Intel® Hyper-Threading Technology ‡
+
+link : /content/www/us/en/ark/search/featurefilter.html?productType=873&2_VTX=True
+text : Find products with Intel® Virtualization Technology (VT-x) ‡
+
+link : /content/www/us/en/ark/search/featurefilter.html?productType=873&0_VTD=True
+text : Find products with Intel® Virtualization Technology for Directed I/O (VT-d) ‡
+
+link : /content/www/us/en/ark/search/featurefilter.html?productType=873&0_EM64=True
+text : Find products with Intel® 64 ‡
+
+link : https://www.intel.com/content/www/us/en/computer-upgrades/pc-upgrades/sipp-intel-stable-image-platform-program.html
+text : Learn more about Intel® SIPP
+
+link : /content/www/us/en/ark/search/featurefilter.html?productType=873&0_AESTech=True
+text : Find products with Intel® AES New Instructions
+
+link : /content/www/us/en/ark/search/featurefilter.html?productType=873&0_TXT=True
+text : Find products with Intel® Trusted Execution Technology ‡
+
+link : /content/www/us/en/support/articles/000029613/processors.html
+text : What is the difference between Boxed and Tray Processors?
+
+link : https://www.intel.com/content/www/us/en/support.html
+text : Product Support
+
+link : https://downloadcenter.intel.com/product/134906/null
+text : Downloads and Software
+
+link : https://community.intel.com/
+text : Support Community
+
+link : https://supporttickets.intel.com/warrantyinfo?lang=en-US
+text : Warranty and Replacement
+
+link : https://www.intel.com/content/www/us/en/support/contact-support.html
+text : Contact support
+
+link : http://www.intel.com/technology/turboboost/
+text : www.intel.com/technology/turboboost/
+
+link : http://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html?wapkw=hyper+threading
+text : http://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html?wapkw=hyper+threading
+
+link : http://ipt.intel.com/
+text : http://ipt.intel.com/
+
+link : http://www.intel.com/content/www/us/en/processors/processor-numbers.html
+text : http://www.intel.com/content/www/us/en/processors/processor-numbers.html
+
+link : /content/www/us/en/company-overview/company-overview.html
+text : Company Information
+
+link : /content/www/us/en/corporate-responsibility/corporate-responsibility.html
+text : Our Commitment
+
+link : /content/www/us/en/diversity/diversity-at-intel.html
+text : Diversity & Inclusion
+
+link : /content/www/us/en/blogs-communities-social.html
+text : Communities
+
+link : https://www.intc.com/investor-relations/default.aspx
+text : Investor Relations
+
+link : /content/www/us/en/company-overview/contact-us.html
+text : Contact Us
+
+link : https://newsroom.intel.com/
+text : Newsroom
+
+link : /content/www/us/en/jobs/jobs-at-intel.html
+text : Jobs
+
+link : https://www.facebook.com/Intel
+text : 
+
+link : https://twitter.com/intel
+text : 
+
+link : https://www.linkedin.com/company/intel-corporation
+text : 
+
+link : https://www.youtube.com/user/channelintel?sub_confirmation=1
+text : 
+
+link : https://www.instagram.com/intel/
+text : 
+
+link : /content/www/us/en/legal/terms-of-use.html
+text : Terms of Use
+
+link : /content/www/us/en/legal/trademarks.html
+text : *Trademarks
+
+link : /content/www/us/en/privacy/intel-privacy-notice.html
+text : Privacy
+
+link : /content/www/us/en/privacy/intel-cookie-notice.html
+text : Cookies
+
+link : /content/www/us/en/corporate-responsibility/statement-combating-modern-slavery.html
+text : Supply Chain Transparency
+
+link : /content/www/us/en/siteindex.html
+text : Site Map
+
+link : https://edc.intel.com/content/www/us/en/products/performance/benchmarks/overview/?r=219444055
+text : Notices and Disclaimers
+
+link : https://www.intel.com/content/www/us/en/policy/policy-human-rights.html
+text : Global Human Rights Principles
+
+link : /content/www/us/en/homepage.html
+text : 
