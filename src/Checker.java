@@ -24,13 +24,14 @@ import javax.swing.JTextField;
 public class Checker {
 	static int faults = 0;
 	static int success = 0;
-	static int depth=0;
+	static int depth=3;
 	public static boolean checkValid(String site) {
 		Document doc;
 		try {
 			doc = Jsoup.connect(site).get();
+			System.out.println(doc.title());
 			success++;
-		} catch (IOException e) {
+		} catch (Exception e) {
 			faults++;
 			return false;
 		}
@@ -55,32 +56,40 @@ public class Checker {
 	public static Elements getLinks(String site) {
 		Document doc;
 		try {
-
-            // need http protocol
-            doc = Jsoup.connect(site).get();
-
-            // get page title
-            String title = doc.title();
-            System.out.println("title : " + title);
-
-            // get all links
-            Elements links = doc.select("a[href]");
-            return links;
+			if(checkValid(site)&&!checkExists(site)) {
+				//System.out.println("new link");
+				doc = Jsoup.connect(site).get();
+	            // get page title
+	            String title = doc.title();
+	            // get all links
+	            Elements links = doc.select("a[href]");
+	            if(depth!=0) {
+	            	depth--;
+	            	for(Element link : links) {
+	            		getLinks(link.attr("href"));
+	            	}
+	            }
+	            for(Element link :links) {
+	            	writeLinks(link);
+	            	//System.out.println("\nlink : " + link.attr("href")+"\n"+"text : " + link.text()+"\n");
+	            	//System.out.println("old link");
+	            }
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		}	
 		return null;
 	}
-	public static void writeLinks(Elements links) throws IOException {
-		for (Element link : links) {
-			Files.write(Paths.get("links.txt"), ("\nlink : " + link.attr("href")+"\n"+"text : " + link.text()+"\n").getBytes(), StandardOpenOption.APPEND);
-        }
+	public static void writeLinks(Element link) throws IOException {
+		Files.write(Paths.get("links.txt"), ("\nlink : " + link.attr("href")+"\n"+"text : " + link.text()+"\n").getBytes(), StandardOpenOption.APPEND);
 	}
 	public static void oneThread(String site) {
-		Threads client1=new Threads(site);
+		Threads client1=new Threads(site,1);
     	client1.start();
 	}
 	public static void createGUI() {
+		File file = new File("links.txt");
+		file.delete();
 		JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	JPanel panel = new JPanel();
@@ -113,6 +122,7 @@ public class Checker {
 	}
     public static void main(String[] args) {
     	createGUI();
+    	oneThread("https://www.guru99.com/");
     }
 
 }
