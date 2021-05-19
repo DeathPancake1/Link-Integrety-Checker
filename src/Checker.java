@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class Checker {
@@ -59,22 +60,33 @@ public class Checker {
 						ArrayList <Threads> threads=new ArrayList<Threads>();
 						Elements links=getFirstLinks(link.getText());
 						ArrayList <Elements> threadLinks=new ArrayList<Elements>();
-						int block=links.size()/Integer.parseInt(threadsNum.getSelectedItem().toString());
-						int count=0;
-						for(int i=1;i<=Integer.parseInt(threadsNum.getSelectedItem().toString());i++) {
-							Elements temp = new Elements();
-							while(count<block*i) {
+						int depthNum=0;
+						try {
+							depthNum=Integer.parseInt(depth.getText());
+						}
+						catch(Exception x) {
+							depthNum=-20;
+						}
+						if(links!=null&&depthNum!=-20) {
+							for(int i=0;i<Integer.parseInt(threadsNum.getSelectedItem().toString());i++) {
+								Elements temp = new Elements();
 								Threads tempThread = new Threads();
 								threads.add(tempThread);
-								temp.add(links.get(count));
-								count++;
+								threadLinks.add(temp);
 							}
-							threadLinks.add(temp);
-						}
-						for(int i=0;i<Integer.parseInt(threadsNum.getSelectedItem().toString());i++) {
-							threads.get(i).links=threadLinks.get(i);
-							threads.get(i).depth=Integer.parseInt(depth.getText());
-							threads.get(i).start();
+							int k=0;
+							for(Element link:links) {
+								threadLinks.get(k).add(link);
+								k++;
+								if(k==Integer.parseInt(threadsNum.getSelectedItem().toString())){
+									k=0;
+								}
+							}
+							for(int i=0;i<Integer.parseInt(threadsNum.getSelectedItem().toString());i++) {
+								threads.get(i).links=threadLinks.get(i);
+								threads.get(i).depth=depthNum;
+								threads.get(i).start();
+							}
 						}
 			    	}
 			    });
