@@ -1,19 +1,8 @@
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
 import java.awt.Font;
-import java.io.BufferedWriter;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,72 +10,26 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
+
 public class Checker {
-	static int faults = 0;
-	static int success = 0;
-	static int depth=3;
-	public static boolean checkValid(String site) {
-		Document doc;
-		try {
-			doc = Jsoup.connect(site).get();
-			System.out.println(doc.title());
-			success++;
-		} catch (Exception e) {
-			faults++;
-			return false;
-		}
-		return true;
-	}
-	public static boolean checkExists(String site) throws FileNotFoundException {
-		File linksFile = new File("links.txt");
-		try {
-			linksFile.createNewFile();
-		} catch (IOException e1) {
-			System.out.println("An error occurred.");
-			e1.printStackTrace();
-		}
-		Scanner myReader = new Scanner(linksFile);
-		while (myReader.hasNextLine()) {
-	    	  if(myReader.nextLine().contains(site)) {
-	    		  return true;
-	    	  }
-		}
-		return false;
-	}
-	public static Elements getLinks(String site) {
-		Document doc;
-		try {
-			if(checkValid(site)&&!checkExists(site)) {
-				//System.out.println("new link");
-				doc = Jsoup.connect(site).get();
-	            // get page title
-	            String title = doc.title();
-	            // get all links
-	            Elements links = doc.select("a[href]");
-	            if(depth!=0) {
-	            	depth--;
-	            	for(Element link : links) {
-	            		getLinks(link.attr("href"));
-	            	}
-	            }
-	            for(Element link :links) {
-	            	writeLinks(link);
-	            	//System.out.println("\nlink : " + link.attr("href")+"\n"+"text : " + link.text()+"\n");
-	            	//System.out.println("old link");
-	            }
+	public static Elements getFirstLinks(String site) {
+		Document doc = null;
+		if(Threads.checkValid(site)) {
+			try {
+				doc=Jsoup.connect(site).get();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}	
+			Elements links = doc.select("a[href]");
+			return links;
+		}
 		return null;
 	}
-	public static void writeLinks(Element link) throws IOException {
-		Files.write(Paths.get("links.txt"), ("\nlink : " + link.attr("href")+"\n"+"text : " + link.text()+"\n").getBytes(), StandardOpenOption.APPEND);
-	}
-	public static void oneThread(String site) {
-		Threads client1=new Threads(site,1);
-    	client1.start();
-	}
+	
 	public static void createGUI() {
 		File file = new File("links.txt");
 		file.delete();
@@ -110,6 +53,12 @@ public class Checker {
     	depth.setFont(new Font("Serif", Font.PLAIN, 18));
     	JButton go = new JButton("Go");
     	go.setBounds(240, 300, 100, 50);
+    	go.addActionListener(new ActionListener(){  
+			public void actionPerformed(ActionEvent e){  
+						Threads t1 = new Threads(getFirstLinks(link.getText()),Integer.parseInt(depth.getText()));
+						t1.start();
+			        }  
+			    });
     	go.setFont(new Font("Serif", Font.PLAIN, 18));
     	JButton stats = new JButton("View Statistics");
     	stats.setBounds(215, 380, 150, 50);
@@ -120,9 +69,8 @@ public class Checker {
     	frame.setSize(600,500);
     	frame.setVisible(true);
 	}
-    public static void main(String[] args) {
-    	createGUI();
-    	oneThread("https://www.guru99.com/");
-    }
+	public static void main(String[] args) {
+		createGUI();
+	}
 
 }
