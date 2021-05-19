@@ -11,51 +11,56 @@ public class Threads  extends Thread{
 	static int success=0;
 	static int faults=0;
 	double time;
+	public Threads () {
+		
+	}
 	public Threads (Elements links,int depth) {
 		this.links=links;
 		this.depth=depth;
 	}
-	public static boolean checkValid(String site) {
+	public static Document checkValid(String site) {
 		Document doc;
 		try {
 			doc = Jsoup.connect(site).get();
-			System.out.println(doc.title());
 			success++;
+			return doc;
 		} catch (Exception e) {
 			faults++;
-			return false;
+			return null;
 		}
-		return true;
 	}
-	public Elements getLinks(String site) {
+	public void getLinks(String site, int depth) {
 		Document doc;
-		if(checkValid(site)) {
-			try {
-				doc=Jsoup.connect(site).get();
-				Elements links = doc.select("a[href]");
-				for(Element link :links) {
-	            	System.out.println("\nlink : " + link.attr("href")+"\n"+"text : " + link.text()+"\n");
-	            }
-				if(depth!=0) {
-					depth--;
-					for(Element link : links) {
-						getLinks(link.attr("href"));
-					}
+		depth=depth-1;
+		doc = checkValid(site);
+		if(doc!=null) {
+			Elements links = doc.select("a[href]");
+			if(depth==0) {
+				for(Element link : links) {
+					checkValid(link.attr("href"));
 				}
-			} catch (IOException e) {
-				e.printStackTrace();
+				return;
+			}
+			else {
+				for(Element link : links) {
+					getLinks(link.attr("href"),depth-1);
+				}
 			}
 		}
-		return null;
 	}
 	public void run() {
 		double startTime = System.nanoTime();
 		depth--;
-		for(Element link : links) {
-			System.out.println("\nlink : " + link.attr("href")+"\n"+"text : " + link.text()+"\n");
-			getLinks(link.attr("href"));
+		if(depth!=0) {
+			for(Element link : links) {
+				getLinks(link.attr("href"),depth);
+			}
+		}else {
+			for(Element link : links) {
+				checkValid(link.attr("href"));
+			}
 		}
-		System.out.println(Threads.success+" "+Threads.faults);
 		time = (System.nanoTime() - startTime);
+		System.out.println(Threads.success+" "+Threads.faults+" "+time/1000000000);
 	}
 }

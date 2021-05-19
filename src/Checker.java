@@ -3,8 +3,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,14 +18,8 @@ import org.jsoup.select.Elements;
 
 public class Checker {
 	public static Elements getFirstLinks(String site) {
-		Document doc = null;
-		if(Threads.checkValid(site)) {
-			try {
-				doc=Jsoup.connect(site).get();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		Document doc = Threads.checkValid(site);
+		if(doc!=null) {
 			Elements links = doc.select("a[href]");
 			return links;
 		}
@@ -51,19 +47,42 @@ public class Checker {
     	JTextField depth = new JTextField();
     	depth.setBounds(150,190,300,50);
     	depth.setFont(new Font("Serif", Font.PLAIN, 18));
+    	String[] items ={"1","2","4","6","8","10"};
+    	JComboBox threadsNum = new JComboBox(items);
+    	threadsNum.setBounds(265,260,50,30);
+    	threadsNum.setFont(new Font("Serif", Font.PLAIN, 18));
     	JButton go = new JButton("Go");
     	go.setBounds(240, 300, 100, 50);
     	go.addActionListener(new ActionListener(){  
-			public void actionPerformed(ActionEvent e){  
-						Threads t1 = new Threads(getFirstLinks(link.getText()),Integer.parseInt(depth.getText()));
-						t1.start();
-			        }  
+			public void actionPerformed(ActionEvent e){
+						Threads.success=0;Threads.faults=0;
+						ArrayList <Threads> threads=new ArrayList<Threads>();
+						Elements links=getFirstLinks(link.getText());
+						ArrayList <Elements> threadLinks=new ArrayList<Elements>();
+						int block=links.size()/Integer.parseInt(threadsNum.getSelectedItem().toString());
+						int count=0;
+						for(int i=1;i<=Integer.parseInt(threadsNum.getSelectedItem().toString());i++) {
+							Elements temp = new Elements();
+							while(count<block*i) {
+								Threads tempThread = new Threads();
+								threads.add(tempThread);
+								temp.add(links.get(count));
+								count++;
+							}
+							threadLinks.add(temp);
+						}
+						for(int i=0;i<Integer.parseInt(threadsNum.getSelectedItem().toString());i++) {
+							threads.get(i).links=threadLinks.get(i);
+							threads.get(i).depth=Integer.parseInt(depth.getText());
+							threads.get(i).start();
+						}
+			    	}
 			    });
     	go.setFont(new Font("Serif", Font.PLAIN, 18));
     	JButton stats = new JButton("View Statistics");
     	stats.setBounds(215, 380, 150, 50);
     	stats.setFont(new Font("Serif", Font.PLAIN, 18));
-    	panel.add(go);panel.add(depth);panel.add(link);panel.add(depthLbl);panel.add(linkLbl);panel.add(title);panel.add(stats);
+    	panel.add(go);panel.add(depth);panel.add(link);panel.add(threadsNum);panel.add(depthLbl);panel.add(linkLbl);panel.add(title);panel.add(stats);
     	panel.setLayout(null);
     	frame.add(panel);
     	frame.setSize(600,500);
