@@ -2,7 +2,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -12,12 +12,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class Checker {
+	static int success=0;
+	static int faults=0;
+	static int finished=0;
+	private static DecimalFormat df2 = new DecimalFormat("#.##");
+	static JLabel stats=new JLabel("Time1: "+0+" Time2: "+0+" Time4: "+0+" Time6:= "+0+" Time8: "+0+" Time10: "+0);
+	static JLabel errors = new JLabel("Successes= "+success+" Faults= "+faults);
 	public static Elements getFirstLinks(String site) {
 		Document doc = Threads.checkValid(site);
 		if(doc!=null) {
@@ -56,9 +61,31 @@ public class Checker {
     	go.setBounds(240, 300, 100, 50);
     	go.addActionListener(new ActionListener(){  
 			public void actionPerformed(ActionEvent e){
-						Threads.success=0;Threads.faults=0;
+						success=0;faults=0;finished=0;
+						int threadCount=Integer.parseInt(threadsNum.getSelectedItem().toString());
+						switch(threadCount) {
+						case 1:
+							Threads.time1=0;
+							break;
+						case 2:
+							Threads.time2=0;
+							break;
+						case 4:
+							Threads.time4=0;
+							break;
+						case 6:
+							Threads.time6=0;
+							break;
+						case 8:
+							Threads.time8=0;
+							break;
+						case 10:
+							Threads.time10=0;
+							break;
+						}
 						ArrayList <Threads> threads=new ArrayList<Threads>();
 						Elements links=getFirstLinks(link.getText());
+						Threads.originalLink=link.getText();
 						ArrayList <Elements> threadLinks=new ArrayList<Elements>();
 						int depthNum=0;
 						try {
@@ -68,9 +95,9 @@ public class Checker {
 							depthNum=-20;
 						}
 						if(links!=null&&depthNum!=-20) {
-							for(int i=0;i<Integer.parseInt(threadsNum.getSelectedItem().toString());i++) {
+							for(int i=0;i<threadCount;i++) {
 								Elements temp = new Elements();
-								Threads tempThread = new Threads();
+								Threads tempThread = new Threads(threadCount);
 								threads.add(tempThread);
 								threadLinks.add(temp);
 							}
@@ -78,26 +105,32 @@ public class Checker {
 							for(Element link:links) {
 								threadLinks.get(k).add(link);
 								k++;
-								if(k==Integer.parseInt(threadsNum.getSelectedItem().toString())){
+								if(k==threadCount){
 									k=0;
 								}
 							}
-							for(int i=0;i<Integer.parseInt(threadsNum.getSelectedItem().toString());i++) {
+							for(int i=0;i<threadCount;i++) {
 								threads.get(i).links=threadLinks.get(i);
 								threads.get(i).depth=depthNum;
 								threads.get(i).start();
 							}
 						}
-			    	}
+						while(finished !=threadCount) {
+							System.out.println(finished);
+						}
+						stats.setText(("Time1: "+df2.format(Threads.time1)+" Time2: "+df2.format(Threads.time2)+" Time4: "+df2.format(Threads.time4)+" Time6: "+df2.format(Threads.time6)+" Time8: "+df2.format(Threads.time8)+" Time10: "+df2.format(Threads.time10)));
+						errors.setText("Successes= "+success+" Faults= "+faults);
+					}
 			    });
     	go.setFont(new Font("Serif", Font.PLAIN, 18));
-    	JButton stats = new JButton("View Statistics");
-    	stats.setBounds(215, 380, 150, 50);
+    	stats.setBounds(30, 380, 650, 50);
     	stats.setFont(new Font("Serif", Font.PLAIN, 18));
-    	panel.add(go);panel.add(depth);panel.add(link);panel.add(threadsNum);panel.add(depthLbl);panel.add(linkLbl);panel.add(title);panel.add(stats);
+    	errors.setBounds(200, 430, 500, 20);
+    	errors.setFont(new Font("Serif", Font.PLAIN, 18));
+    	panel.add(go);panel.add(depth);panel.add(link);panel.add(threadsNum);panel.add(depthLbl);panel.add(linkLbl);panel.add(title);panel.add(stats);panel.add(errors);
     	panel.setLayout(null);
     	frame.add(panel);
-    	frame.setSize(600,500);
+    	frame.setSize(700,500);
     	frame.setVisible(true);
 	}
 	public static void main(String[] args) {

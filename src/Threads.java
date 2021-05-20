@@ -1,4 +1,3 @@
-import java.io.IOException;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -8,24 +7,27 @@ import org.jsoup.select.Elements;
 public class Threads  extends Thread{
 	Elements links;
 	int depth;
-	static int success=0;
-	static int faults=0;
 	double time;
-	public Threads () {
-		
-	}
-	public Threads (Elements links,int depth) {
-		this.links=links;
-		this.depth=depth;
+	int m;
+	static double time1=0,time2=0,time4=0,time6=0,time8=0,time10=0;
+	static String originalLink;
+	public Threads (int m) {
+		this.m=m;
 	}
 	public static Document checkValid(String site) {
-		Document doc;
+		Document doc = null;
 		try {
-			doc = Jsoup.connect(site).get();
-			success++;
+			if(site.startsWith("http")) {
+				doc = Jsoup.connect(site).timeout(5000).get();
+				if(doc==null) {
+					Checker.faults++;
+					return null;
+				}
+				Checker.success++;
+			}
 			return doc;
 		} catch (Exception e) {
-			faults++;
+			Checker.faults++;
 			return null;
 		}
 	}
@@ -35,7 +37,7 @@ public class Threads  extends Thread{
 		doc = checkValid(site);
 		if(doc!=null) {
 			Elements links = doc.select("a[href]");
-			if(depth==0) {
+			if(depth<=0) {
 				for(Element link : links) {
 					checkValid(link.attr("href"));
 				}
@@ -51,7 +53,7 @@ public class Threads  extends Thread{
 	public void run() {
 		double startTime = System.nanoTime();
 		depth--;
-		if(depth!=0) {
+		if(depth>0) {
 			for(Element link : links) {
 				getLinks(link.attr("href"),depth);
 			}
@@ -60,7 +62,39 @@ public class Threads  extends Thread{
 				checkValid(link.attr("href"));
 			}
 		}
-		time = (System.nanoTime() - startTime);
-		System.out.println(Threads.success+" "+Threads.faults+" "+time/1000000000);
+		time = (System.nanoTime() - startTime)/1000000000;
+		switch(m) {
+		case 1:
+			if(time>time1) {
+				time1=time;
+			}
+			break;
+		case 2:
+			if(time>time2) {
+				time2=time;
+			}
+			break;
+		case 4:
+			if(time>time4) {
+				time4=time;
+			}
+			break;
+		case 6:
+			if(time>time6) {
+				time6=time;
+			}
+			break;
+		case 8:
+			if(time>time8) {
+				time8=time;
+			}
+			break;
+		case 10:
+			if(time>time10) {
+				time10=time;
+			}
+			break;
+		}
+		Checker.finished++;
 	}
 }
