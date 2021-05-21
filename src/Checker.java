@@ -21,7 +21,7 @@ public class Checker {
 	static int faults=0;
 	static int finished=0;
 	private static DecimalFormat df2 = new DecimalFormat("#.##");
-	static JLabel stats=new JLabel("Time1: "+0+" Time2: "+0+" Time4: "+0+" Time6:= "+0+" Time8: "+0+" Time10: "+0);
+	static JLabel stats=new JLabel("Time1: "+0+" Time2: "+0+" Time4: "+0+" Time6:= "+0+" Time8: "+0+" Time10: "+0+" Time12: "+0+" Time14: "+0+" Time16 "+0);
 	static JLabel errors = new JLabel("Successes= "+success+" Faults= "+faults);
 	public static Elements getFirstLinks(String site) {
 		Document doc = Threads.checkValid(site);
@@ -53,7 +53,7 @@ public class Checker {
     	JTextField depth = new JTextField();
     	depth.setBounds(150,190,300,50);
     	depth.setFont(new Font("Serif", Font.PLAIN, 18));
-    	String[] items ={"1","2","4","6","8","10"};
+    	String[] items ={"1","2","4","6","8","10","12","14","16"};
     	JComboBox threadsNum = new JComboBox(items);
     	threadsNum.setBounds(265,260,50,30);
     	threadsNum.setFont(new Font("Serif", Font.PLAIN, 18));
@@ -81,6 +81,15 @@ public class Checker {
 							break;
 						case 10:
 							Threads.time10=0;
+							break;
+						case 12:
+							Threads.time12=0;
+							break;
+						case 14:
+							Threads.time14=0;
+							break;
+						case 16:
+							Threads.time16=0;
 							break;
 						}
 						ArrayList <Threads> threads=new ArrayList<Threads>();
@@ -118,19 +127,19 @@ public class Checker {
 						while(finished !=threadCount) {
 							System.out.println(finished);
 						}
-						stats.setText(("Time1: "+df2.format(Threads.time1)+" Time2: "+df2.format(Threads.time2)+" Time4: "+df2.format(Threads.time4)+" Time6: "+df2.format(Threads.time6)+" Time8: "+df2.format(Threads.time8)+" Time10: "+df2.format(Threads.time10)));
+						stats.setText(("Time1: "+df2.format(Threads.time1)+" Time2: "+df2.format(Threads.time2)+" Time4: "+df2.format(Threads.time4)+" Time6: "+df2.format(Threads.time6)+" Time8: "+df2.format(Threads.time8)+" Time10: "+df2.format(Threads.time10)+" Time12: "+df2.format(Threads.time12)+" Time14: "+df2.format(Threads.time14)+" Time16: "+df2.format(Threads.time16)));
 						errors.setText("Successes= "+success+" Faults= "+faults);
 					}
 			    });
     	go.setFont(new Font("Serif", Font.PLAIN, 18));
-    	stats.setBounds(30, 380, 650, 50);
+    	stats.setBounds(0, 380, 900, 50);
     	stats.setFont(new Font("Serif", Font.PLAIN, 18));
     	errors.setBounds(200, 430, 500, 20);
     	errors.setFont(new Font("Serif", Font.PLAIN, 18));
     	panel.add(go);panel.add(depth);panel.add(link);panel.add(threadsNum);panel.add(depthLbl);panel.add(linkLbl);panel.add(title);panel.add(stats);panel.add(errors);
     	panel.setLayout(null);
     	frame.add(panel);
-    	frame.setSize(700,500);
+    	frame.setSize(900,500);
     	frame.setVisible(true);
 	}
 	public static void main(String[] args) {

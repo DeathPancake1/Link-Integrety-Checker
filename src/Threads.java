@@ -9,7 +9,7 @@ public class Threads  extends Thread{
 	int depth;
 	double time;
 	int m;
-	static double time1=0,time2=0,time4=0,time6=0,time8=0,time10=0;
+	static double time1=0,time2=0,time4=0,time6=0,time8=0,time10=0,time12=0,time14=0,time16=0;
 	static String originalLink;
 	public Threads (int m) {
 		this.m=m;
@@ -19,6 +19,14 @@ public class Threads  extends Thread{
 		try {
 			if(site.startsWith("http")) {
 				doc = Jsoup.connect(site).timeout(5000).get();
+				if(doc==null) {
+					Checker.faults++;
+					return null;
+				}
+				Checker.success++;
+			}
+			else {
+				doc = Jsoup.connect(originalLink+site).timeout(5000).get();
 				if(doc==null) {
 					Checker.faults++;
 					return null;
@@ -52,7 +60,6 @@ public class Threads  extends Thread{
 	}
 	public void run() {
 		double startTime = System.nanoTime();
-		depth--;
 		if(depth>0) {
 			for(Element link : links) {
 				getLinks(link.attr("href"),depth);
@@ -92,6 +99,21 @@ public class Threads  extends Thread{
 		case 10:
 			if(time>time10) {
 				time10=time;
+			}
+			break;
+		case 12:
+			if(time>time12) {
+				time12=time;
+			}
+			break;
+		case 14:
+			if(time>time14) {
+				time14=time;
+			}
+			break;
+		case 16:
+			if(time>time16) {
+				time16=time;
 			}
 			break;
 		}
