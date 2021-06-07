@@ -31,10 +31,7 @@ public class Checker {
 		}
 		return null;
 	}
-	
 	public static void createGUI() {
-		File file = new File("links.txt");
-		file.delete();
 		JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	JPanel panel = new JPanel();
@@ -145,5 +142,4 @@ public class Checker {
 	public static void main(String[] args) {
 		createGUI();
 	}
-
 }
